@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehta is back Official</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mehta is back Official</title>
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq) return; n=f.fbq=function(){n.callMethod ?
+      n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
+      if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+      n.queue=[]; t=b.createElement(e); t.async=!0;
+      t.src=v; s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1228640765753925'); // ← your Pixel ID is already here
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1228640765753925&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script>
+    // joinTelegram: fires a custom Pixel event then opens Telegram.
+    // Uses a small delay so the Pixel has time to send the event before navigation.
+    function joinTelegram(e) {
+      e.preventDefault();
+
+      var telegramUrl = 'https://t.me/+0gYaSvD3PFljZDY1';
+
+      try {
+        if (typeof fbq !== 'undefined' && typeof fbq === 'function') {
+          // fire custom event
+          fbq('trackCustom', 'TelegramJoin');
+          // open in new tab after short delay so the event can be sent
+          setTimeout(function () {
+            window.open(telegramUrl, '_blank', 'noopener');
+          }, 300); // 300 ms works well in almost all cases
+          return;
+        }
+      } catch (err) {
+        // if fbq call fails for any reason, continue to fallback
+        console.warn('fbq error:', err);
+      }
+
+      // fallback: if fbq isn't available, open immediately
+      window.open(telegramUrl, '_blank', 'noopener');
+    }
+  </script>
 </head>
 <body>
+  <div class="card">
+    <img src="./mehta.jpeg" alt="Profile" class="profile-img">
 
-    <div class="card">
-        <img src="./mehta.jpeg" alt="Profile" class="profile-img">
+    <h2>Mehta is back official 📊🏆</h2>
+    <p class="subtext">📊 10+ years experience 📈</p>
 
-        <h2>Mehta is back official 📊🏆</h2>
-        <p class="subtext">📊 10+ years experience 📈</p>
+    <!-- Note: target and rel removed from the anchor because JS opens the link.
+         If JS is disabled, anchor href still works (no onclick would run). -->
+    <a href="https://t.me/+0gYaSvD3PFljZDY1"
+       onclick="joinTelegram(event)"
+       class="btn">
+      🚀 Join Telegram 💬
+    </a>
 
-        <a href="https://t.me/+0gYaSvD3PFljZDY1" target="_blank" class="btn">
-            🚀 Join Telegram 💬
-        </a>
+    <h3 class="market-title">Forex & Stock Market</h3>
 
-        <h3 class="market-title">Forex & Stock Market</h3>
+    <ul class="features">
+      <li>📊 <strong>Live Daily Trades</strong> – From my portfolio to yours!</li>
+      <li>🔥 <strong>Exclusive Signals</strong> – Get the same trades I take!</li>
+      <li>💯 <strong>High Accuracy</strong> – Consistent proven strategy!</li>
+      <li>💡 <strong>Real-Time Updates</strong> – Instant market alerts!</li>
+    </ul>
 
-        <ul class="features">
-            <li>📊 <strong>Live Daily Trades</strong> – From my portfolio to yours!</li>
-            <li>🔥 <strong>Exclusive Signals</strong> – Get the same trades I take!</li>
-            <li>💯 <strong>High Accuracy</strong> – Consistent proven strategy!</li>
-            <li>💡 <strong>Real-Time Updates</strong> – Instant market alerts!</li>
-        </ul>
-
-        <p class="hindi-title">क्या आप ट्रेडिंग से पैसे कमाना चाहते हैं?</p>
-        <p class="hindi-sub">अगर हां तो दिए गए टेलीग्राम बटन पर दबाएं!</p>
-    </div>
-
+    <p class="hindi-title">क्या आप ट्रेडिंग से पैसे कमाना चाहते हैं?</p>
+    <p class="hindi-sub">अगर हां तो दिए गए टेलीग्राम बटन पर दबाएं!</p>
+  </div>
 </body>
 </html>
